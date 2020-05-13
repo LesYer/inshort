@@ -1,0 +1,62 @@
+<ul class="accordion-menu">
+    {% load tz %} <!--for localtime-->
+    {% for url in user_urls %}
+    
+    <li class="for_border">
+        
+        <div class="col-6 col-md-4 word-break">
+            <a href="{{ url.long_url }}"> {{ url.long_url }} </a>
+        </div>
+
+        <div id='copyTarget{{ forloop.counter }}'class="col-6 col-md-3 word-break ">
+            {{ url.full_inshort_url }}
+        </div>
+        <div class="col-6 col-md-2 ">
+            меньше місяця
+        </div>
+        <div onclick="copyToClipboard('copyTarget{{ forloop.counter}}')" class="col-6 col-md-1 ">
+            <button class="btn">Copy</button>
+        </div>
+        <div class="dropdownlink row" >
+            <div class="col-5 col-md-2  for_border_item4  word-break">
+                Переходів:<a>{{ url.visit_set.count }}</a>
+            </div>
+        </div>
+
+        <ul class="submenuItems">
+            <div class="row title">
+                <div class="col-6 col-md-3">
+                    Время
+                </div>
+                <div class="col-6 col-md-3">
+                    IP
+                </div>
+                <div class="col-6 col-md-3">
+                    Город
+                </div>
+                <div class="col-6 col-md-3">
+                    Страна
+                </div>
+                {% for visit in url.visit_set.all %}
+                <div class="row title">
+                    <div class="col-6 col-md-3">
+                        {% timezone "Europe/Kiev" %} <!--to Ukraine time-->
+                        {{ visit.datetime | date:"H:i d.m.Y" }} <!--set time format-->
+                        {% endtimezone %}<!--to Ukraine time-->
+                    </div>
+                    <div class="col-6 col-md-3">
+                       {{ visit.visitor_ip }}
+                    </div>
+                    <div class="col-6 col-md-3">
+                        Запорожжя
+                    </div>
+                    <div class="col-6 col-md-3">
+                        Не Україна
+                    </div>
+                </div>
+                {% endfor %}
+        </ul>
+        
+    </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,47 @@
+{% extends "header.html" %}    
+{% block content %}
+<main>
+    <div class="headline">
+    <h1 class="text-center">INSHORT</h1>
+    </div>
+    <div class="form">
+      <form method="POST" action="{% url 'add_url' %}"  class="form">
+               {% csrf_token %}
+        <div class="input-group col-md-10">
+          <div id="input_url" class="input_url">
+            <input  id="long_url" type="url" name="long_url" class="form-control"  size="300px"   required  placeholder="Введіть URL для скорочення.">
+          </div>
+          <span class="input-group-btn">
+            <button type="button"   data-toggle="tooltip"   class="btn btn-info btn_modal_window " required>
+              Скоротити
+            </button>
+          </span>
+        </div>
+        <div id="my_modal" class="modal">
+          <div class="modal_content">
+            <label class="text-center cols-sm-12 ">Заповніть<label>
+            <div class="close_modal_window"></div>
+             <div class="form-group data-ur-group">
+                <label for="username" class="cols-sm-2 control-label">Скорочення</label>
+                <input type="text" name="short_url" class="form-control" />
+                <label>Буде дійсна </label>
+                <select id="myList">
+                  <option value="0">5хв</option>
+                  <option value="1">День</option>
+                  <option value="2">Тиждень</option>
+                  <option value="3">Місяць</option>
+                  <option value="4">Рік</option>
+                  <option value="5">Назавжди</option>
+                </select>
+                <button type="submit" class="btn btn-success">Створити</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+  <div id="urls_container"></div>
+</main>
+
+{% endblock %}
+
+
