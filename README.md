@@ -14,7 +14,7 @@ Taras Shevchenko National University of Kyiv, 2020.
 * Oleksandr Klochkov
 
 ## Usage
-1. Clone repository `git clone https://gl.knu.ua/klochkov/inshort.git`
+1. Clone repository `https://github.com/LesYer/inshort.git`
 2. Create virtual enviroment `python -m venv venv`
 3. Activate virtual enviroment:
     * Windows: `venv\Scripts\activate`
